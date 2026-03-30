@@ -13,7 +13,7 @@ END = '\n\n'
 
 
 # --- BANCO DE DADOS ---
-DATA = pd.read_csv('titanic.csv', usecols=['Sex', 'Age', 'Fare'])
+DATA = pd.read_csv('codigo/titanic.csv', usecols=['Sex', 'Age', 'Fare'])
 # OBS.: O preço dos bilhetes, originalmente vendidos no sistema Lsp (libras, xelins e pence), é dado em Lp (libras decimais)
 
 # Higienização do banco de dados

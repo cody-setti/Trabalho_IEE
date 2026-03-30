@@ -4,8 +4,15 @@
 # Aluno 2: Vinícius de Sá Ferreira    No. USP: 15491650
 
 # --- INICIALIZAÇÃO DO CÓDIGO ---
-import pandas as pd
+import os
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+plt.rcParams.update({
+    'font.family': 'serif',
+    'font.serif': ['TeX Gyre Pagella'],
+})
+
 
 # Constantes
 DECIMAL = 2
@@ -162,14 +169,78 @@ print(f'(R) Quartis dos preços: Q1 = {rfareQ1:.{DECIMAL}f}; Q2 = {rfareQ2:.{DEC
 # f.5) o desvio padrão
 rstdAge  = rDATA['Age'].std()
 rstdFare = rDATA['Fare'].std()
-print(f'(R) Desvio-padrão: Idades = {rstdAge:.{DECIMAL}f}; Preços = {rstdFare:.{DECIMAL}f}')
+print(f'(R) Desvio-padrão: Idades = {rstdAge:.{DECIMAL}f}; Preços = {rstdFare:.{DECIMAL}f}', end=END)
 
 # f.6) COMPARE OS VALORES DAS MEDIDAS OBTIDAS COM O ROL
+# Vide relatório
 
 
 # g) Sumarizar as informações de cada variável graficamente (apresente dois gráficos)
-#  'Sex': Barra & Pizza
+os.makedirs('output', exist_ok=True)
 
-#  'Age': 
+# GRÁFICOS PARA 'SEXO'
+# Gráfico de Barras
+plt.figure(figsize=(5, 4))
+SexDF_plot = DATA['Sex'].value_counts()
+SexDF_plot = SexDF_plot.rename(index={'male': 'Masculino', 'female': 'Feminino'})
+SexDF_plot.plot(kind='bar', color=['#1f77b4', '#ff7f0e'], edgecolor='black')
+plt.title('Frequência Absoluta por Sexo', fontsize=14)
+plt.xlabel('Sexo', fontsize=12)
+plt.ylabel('Frequência', fontsize=12)
+plt.xticks(rotation=0)
+plt.tight_layout()
+plt.savefig('output/sexo_barra.png', format='png')
+plt.close()
 
-# 'Fare': Histograma & boxplot
+# Gráfico de Setores (Pizza)
+plt.figure(figsize=(5, 4))
+SexDF_plot.plot(kind='pie', autopct='%1.1f%%', startangle=90, colors=['#1f77b4', '#ff7f0e'])
+plt.title('Proporção por Sexo', fontsize=14)
+plt.ylabel('')  # Remove o rótulo do eixo Y que o pandas coloca por padrão
+plt.tight_layout()
+plt.savefig('output/sexo_pizza.png', format='png')
+plt.close()
+
+# GRÁFICOS PARA 'IDADE'
+# Histograma
+plt.figure(figsize=(5, 4))
+plt.hist(DATA['Age'], bins=15, color='#2ca02c', edgecolor='black', alpha=0.7)
+plt.title('Distribuição de Idades (Histograma)', fontsize=14)
+plt.xlabel('Idade (anos)', fontsize=12)
+plt.ylabel('Frequência', fontsize=12)
+plt.tight_layout()
+plt.savefig('output/idade_histograma.png', format='png')
+plt.close()
+
+# Boxplot
+plt.figure(figsize=(5, 4))
+plt.boxplot(DATA['Age'], vert=False, patch_artist=True, boxprops=dict(facecolor='#2ca02c', color='black'))
+plt.title('Dispersão de Idades (Boxplot)', fontsize=14)
+plt.xlabel('Idade (anos)', fontsize=12)
+plt.yticks([1], ['Idade'])
+plt.tight_layout()
+plt.savefig('output/idade_boxplot.png', format='png')
+plt.close()
+
+# GRÁFICOS PARA 'PREÇOS'
+# Histograma
+plt.figure(figsize=(5, 4))
+plt.hist(DATA['Fare'], bins=20, color='#d62728', edgecolor='black', alpha=0.7)
+plt.title('Distribuição dos Preços dos Bilhetes (Histograma)', fontsize=14)
+plt.xlabel('Preço (Lp)', fontsize=12)
+plt.ylabel('Frequência', fontsize=12)
+plt.tight_layout()
+plt.savefig('output/preco_histograma.png', format='png')
+plt.close()
+
+# Boxplot
+plt.figure(figsize=(5, 4))
+plt.boxplot(DATA['Fare'], vert=False, patch_artist=True, boxprops=dict(facecolor='#d62728', color='black'))
+plt.title('Dispersão dos Preços dos Bilhetes (Boxplot)', fontsize=14)
+plt.xlabel('Preço (Lp)', fontsize=12)
+plt.yticks([1], ['Preço'])
+plt.tight_layout()
+plt.savefig('output/preco_boxplot.png', format='png')
+plt.close()
+
+print("Gráficos gerados e salvos com sucesso na pasta 'output/'.", end=END)

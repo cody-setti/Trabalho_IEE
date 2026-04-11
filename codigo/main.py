@@ -18,11 +18,16 @@ import matplotlib.pyplot as plt
 plt.rcParams.update({
     'font.family': 'serif',
     'font.serif': ['TeX Gyre Pagella'],
+    'font.size': 10, # Tamanho de fonte das legendas de imagens no relatório
+    'axes.labelsize': 10,
+    'xtick.labelsize': 8,
+    'ytick.labelsize': 8,
 })
 
 # Constantes
 DECIMAL = 2
 END = '\n\n'
+WIDTH = 3.28 # Para geração de gráficos. 49% do comprimento de linha do relatório em polegadas
 
 
 # --- BANCO DE DADOS ---
@@ -125,7 +130,7 @@ print(AgeFREQ, end=END)
 # TABELA DE FREQ. POR CLASSES PARA 'PREÇO'
 # Número de classes seguindo a regra de Sturges
 n_obs = len(DATA)
-k_sturges = int(np.ceil(1 + np.log2(n_obs)))
+k_sturges = int(np.ceil(1 + 3.3*np.log10(n_obs)))
 
 FareFREQ = (
     pd.cut(DATA['Fare'], bins=k_sturges, right=False) # faixa de preço do bilhete de cada pessoa
@@ -193,25 +198,25 @@ os.makedirs('output', exist_ok=True)
 
 # GRÁFICOS PARA 'SEXO'
 # Gráfico de Barras
-plt.figure(figsize=(5, 4))
+plt.figure(figsize=(WIDTH, 2.5))
 SexFREQ.rename(index={'male': 'Masculino', 'female': 'Feminino'}).plot(
     kind='bar',  color=["#a4c7e0", "#ffd596"], edgecolor='black'
 )
-plt.xlabel('Sexo', fontsize=12)
-plt.ylabel('Frequência', fontsize=12)
+plt.xlabel('Sexo')
+plt.ylabel('Frequência')
 plt.xticks(rotation=0)
 plt.tight_layout()
 plt.savefig('output/sexo_barra.pdf', format='pdf')
 plt.close()
 
 # Gráfico de Setores (Pizza)
-plt.figure(figsize=(5, 4))
+plt.figure(figsize=(WIDTH, 2.5))
 SexFREQ.rename(index={'male': 'Masculino', 'female': 'Feminino'}).plot(
     kind = 'pie',
     autopct = '%1.1f%%',
     startangle = 90,
     colors = ['#a4c7e0', "#ffd596"],
-    wedgeprops = dict(edgecolor='black', linewidth=1)
+    wedgeprops = dict(edgecolor='black', linewidth=0.75)
 )
 plt.ylabel('')  # Remove o rótulo do eixo Y que o pandas coloca por padrão
 plt.tight_layout()
@@ -221,17 +226,17 @@ plt.close()
 
 # GRÁFICOS PARA 'IDADE'
 # Histograma
-plt.figure(figsize=(5, 7))
+plt.figure(figsize=(WIDTH, 3.5))
 plt.hist(DATA['Age'], bins=age_bins, color='#7DA17D', edgecolor='black')
 plt.xticks(age_bins)
-plt.xlabel('Idade (anos)', fontsize=12)
-plt.ylabel('Frequência', fontsize=12)
+plt.xlabel('Idade (anos)')
+plt.ylabel('Frequência')
 plt.tight_layout()
 plt.savefig('output/idade_histograma.pdf', format='pdf')
 plt.close()
 
 # Boxplot
-plt.figure(figsize=(5, 4))
+plt.figure(figsize=(WIDTH, 2.5))
 plt.boxplot(DATA['Age'],
             vert = False,
             patch_artist = True,
@@ -239,7 +244,7 @@ plt.boxplot(DATA['Age'],
             medianprops = dict(color='white', linewidth=1.5),
             flierprops = dict(marker='o', markerfacecolor='black', markersize=4.5, alpha=0.6, markeredgecolor='none')
             )
-plt.xlabel('Idade (anos)', fontsize=12)
+plt.xlabel('Idade (anos)')
 plt.yticks([])
 plt.tight_layout()
 plt.savefig('output/idade_boxplot.pdf', format='pdf')
@@ -248,16 +253,16 @@ plt.close()
 
 # GRÁFICOS PARA 'PREÇOS'
 # Histograma
-plt.figure(figsize=(5, 7))
+plt.figure(figsize=(WIDTH, 3.5))
 plt.hist(DATA['Fare'], bins=k_sturges, color="#A28BB6", edgecolor='black')
-plt.xlabel('Preço (Lp)', fontsize=12)
-plt.ylabel('Frequência', fontsize=12)
+plt.xlabel('Preço (Lp)')
+plt.ylabel('Frequência')
 plt.tight_layout()
 plt.savefig('output/preco_histograma.pdf', format='pdf')
 plt.close()
 
 # Boxplot
-plt.figure(figsize=(5, 4))
+plt.figure(figsize=(WIDTH, 2.5))
 plt.boxplot(DATA['Fare'],
             vert = False,
             patch_artist = True,
@@ -265,7 +270,7 @@ plt.boxplot(DATA['Fare'],
             medianprops = dict(color='white', linewidth=1.5),
             flierprops = dict(marker='o', markerfacecolor='black', markersize=4.5, alpha=0.6, markeredgecolor='none')
             )
-plt.xlabel('Preço (Lp)', fontsize=12)
+plt.xlabel('Preço (Lp)')
 plt.yticks([])
 plt.tight_layout()
 plt.savefig('output/preco_boxplot.pdf', format='pdf')

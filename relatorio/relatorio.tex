@@ -35,20 +35,21 @@
 
 		\item preço de seu bilhete, em libras esterlinas (\pounds).
 	\end{enumerate}
+	Consideramos para nossos cálculos apenas passageiros sem dados faltantes. Portanto, restringimo-nos a 714 deles.
 	Ao se tratar da modelagem que fizemos de cada conjunto de dados:
 	\begin{enumerate}
 		\item Os valores ``feminino'' e ``masculino'' não são quânticos nem ordenáveis. Portanto, interpretamos os sexos dos passageiros como amostragens de uma \textbf{variável qualitativa nominal}.
 
 		\item Arredondamos as idades\footnote{As idades sofreram ``arredondamento bancário'', especificamente.} a anos inteiros --- já que algumas são registradas de forma fracionária no arquivo \verb|titanic.csv|. Logo, após o arredondamento, interpretamos as idades como amostragens de uma \textbf{variável quantitativa discreta}.
 
-		\item No momento de venda, em 1912, os bilhetes do Titanic foram cobrados no sistema monetário \textit{Sterling} antigo, com valores dados em libras, xelins e pence. Todavia, no banco de dados \verb|titanic.csv|, de 2019, estes valores foram convertidos ao novo sistema \textit{Sterling}, de 1971 em diante. Portanto, cada valor é dado por um único número de libras, embora seja frequentemente um número fracionário. Com isso em mente, interpretamos os preços como amostragens de uma única \textbf{variável quantitativa contínua}.
+		\item No momento de venda, em 1912, os bilhetes do Titanic foram cobrados no sistema monetário \textit{Sterling} antigo, com valores dados em libras, xelins e pence. Todavia, no banco de dados \verb|titanic.csv| --- disponibilizado no \emph{Kaggle} em 2012 --- estes valores foram convertidos ao novo sistema \textit{Sterling}, de 1971 em diante. Portanto, cada valor é dado por um único número de libras, embora seja frequentemente um número fracionário. Com isso em mente, interpretamos os preços como amostragens de uma única \textbf{variável quantitativa contínua}.
 	\end{enumerate}
+	\vspace*{\baselineskip}
 
 	\noindent\textbf{a) Com base no rol, calcular a média, mediana e moda e compare-as}
 	\begin{table}[H]
 		\centering
 		\caption{Medidas de posição dos conjuntos de dados}
-		\label{a}
 		\begin{tabular}{c|ccc}
 			\toprule
 						& Sexo		& Idade (anos)	& Preço (\pounds)	\\
@@ -59,14 +60,14 @@
 			\bottomrule
 		\end{tabular}
 	\end{table}
+	[INSERIR INTERPRETAÇÃO]
+	\vspace*{2\baselineskip}
 
 	\noindent\textbf{b) Com base no rol, calcular os quartis, interpretando-os}
 
-	Vale salientar que quartis de índices fracionários foram calculados pela média simples dos dois valores de índices mais próximos.
 	\begin{table}[H]
 		\centering
-		\caption{Quartis das idades e dos preços dos bilhetes dos passageiros}
-		\label{b}
+		\caption{Quartis das idades e dos preços dos bilhetes dos passageiros\footnotemark}
 		\begin{tabular}{c|cc}
 			\toprule
 					& Idade (anos)	& Preço (\pounds)	\\
@@ -77,12 +78,14 @@
 			\bottomrule
 		\end{tabular}
 	\end{table}
+	\footnotetext{Quartis de índices fracionários foram calculados pela média simples dos dois valores de índices mais próximos.}
+	[INSERIR INTERPRETAÇÃO]
+	\vspace*{2\baselineskip}
 	
 	\noindent\textbf{c) Calcular a amplitude total, amplitude interquartílica, o desvio-padrão e coeficiente de variação. Ressaltar dentre as variáveis quantitativas qual tem maior variabilidade}
 	\begin{table}[H]
 		\centering
 		\caption{Medidas de dispersão dos conjuntos de dados quantitativos}
-		\label{c}
 		\begin{tabular}{c|cc}
 			\toprule
 					& Idade (anos)	& Preço (\pounds)	\\
@@ -95,22 +98,21 @@
 		\end{tabular}
 	\end{table}
 	O coeficiente de variação dos preços é maior do que o das idades e, portanto, a variável associada aos preços possui variabilidade maior do que a associada às idades.
-
-	\vspace*{\baselineskip}
+	\vspace*{2\baselineskip}
 
 	\noindent\textbf{d) Com a comparação das medidas de tendência central, avaliar a simetria}
+	\vspace*{0.5\baselineskip}
 
 	Tanto no caso das idades, quanto no caso dos preços, a mediana é inferior à média. Portanto, ambos os conjuntos possuem assimetria à direita.
-
-	\vspace*{\baselineskip}
+	\vspace*{2\baselineskip}
 	
 	\noindent\textbf{e) Sumarizar as informações em tabela}
+	\vspace*{0.5\baselineskip}
 
 	Para sumarizar as informações relativas a sexo, como apenas duas categorias foram registradas, optamos por uma tabela de frequência simples.
 	\begin{table}[H]
 		\centering
 		\caption{Frequência de sexos}
-		\label{e-Sex}
 		\begin{tabular}{c|c}
 			\toprule
 			Sexo		& Frequência\\
@@ -120,56 +122,56 @@
 			\bottomrule
 		\end{tabular}
 	\end{table}
-	Para as idades, todavia, que são muitas, optamos por uma tabela de frequência por classes. As classes elegidas foram décadas.
+	Para as idades e os preços, todavia, que são muitos, optamos por tabelas de frequência por classes. Para as idades, as classes elegidas foram décadas. Para os preços, elegemos 11 classes de mesma amplitude, conforme sugere a regra de Sturges.
 	\begin{table}[H]
-		\centering
-		\caption{Frequência de idades por década}
-		\label{e-Age}
-		\begin{tabular}{c|c}
-			\toprule
-			Faixa Etária (anos)& Frequência\\
-			\midrule
-			$0\vdash 10$	& 62		\\
-			$10\vdash 20$	& 102		\\
-			$20\vdash 30$	& 220		\\
-			$30\vdash 40$	& 167		\\
-			$40\vdash 50$	& 89		\\
-			$50\vdash 60$	& 48		\\
-			$60\vdash 70$	& 19		\\
-			$70\vdash 80$	& 6			\\
-			$80\vdash 90$	& 1			\\
-			\bottomrule
-		\end{tabular}
+		\begin{minipage}[t]{0.48\textwidth}
+			\centering
+			\caption{Frequência de idades por década}
+			\begin{tabular}{c|c}
+				\toprule
+				Faixa Etária (anos)& Frequência\\
+				\midrule
+				$0\vdash 10$	& 62		\\
+				$10\vdash 20$	& 102		\\
+				$20\vdash 30$	& 220		\\
+				$30\vdash 40$	& 167		\\
+				$40\vdash 50$	& 89		\\
+				$50\vdash 60$	& 48		\\
+				$60\vdash 70$	& 19		\\
+				$70\vdash 80$	& 6			\\
+				$80\vdash 90$	& 1			\\
+				\bottomrule
+			\end{tabular}
+		\end{minipage}
+		\hfill
+		\begin{minipage}[t]{0.48\textwidth}
+			\centering
+			\caption{Frequência de preços de bilhetes por classes}
+			\begin{tabular}{c|c}
+				\toprule
+				Preço (\pounds)		& Frequência\\
+				\midrule
+			    $  0,000\vdash 46,575$	& 566	\\
+				$ 46,575\vdash 93,151$	& 98	\\
+				$ 93,151\vdash 139,726$	& 22	\\
+				$139,726\vdash 186,302$	& 10	\\
+				$186,302\vdash 232,877$	& 7		\\
+				$232,877\vdash 279,452$	& 8		\\
+				$279,452\vdash 326,028$	& 0		\\
+				$326,028\vdash 372,603$	& 0		\\
+				$372,603\vdash 419,178$	& 0		\\
+				$419,178\vdash 465,754$	& 0		\\
+				$465,754\vdash 512,842$	& 3		\\
+				\bottomrule
+			\end{tabular}
+		\end{minipage}
 	\end{table}
-	Por fim, para os preços dos bilhetes, que também são muitos, também optamos por uma tabela de frequência por classes. Neste caso, elegemos um número de classes conforme a regra de Sturges.
-	\begin{table}[H]
-		\centering
-		\caption{Frequência de preços de bilhetes por classes}
-		\label{e-Fare}
-		\begin{tabular}{c|c}
-			\toprule
-			Preço (\pounds)		& Frequência\\
-			\midrule
-	       	$  0,000\vdash 46,575$	& 566	\\
-			$ 46,575\vdash 93,151$	& 98	\\
-			$ 93,151\vdash 139,726$	& 22	\\
-			$139,726\vdash 186,302$	& 10	\\
-			$186,302\vdash 232,877$	& 7		\\
-			$232,877\vdash 279,452$	& 8		\\
-			$279,452\vdash 326,028$	& 0		\\
-			$326,028\vdash 372,603$	& 0		\\
-			$372,603\vdash 419,178$	& 0		\\
-			$419,178\vdash 465,754$	& 0		\\
-			$465,754\vdash 512,842$	& 3		\\
-			\bottomrule
-		\end{tabular}
-	\end{table}
+	\vspace*{\baselineskip}
 
 	\noindent\textbf{f) Com base nas informações tabeladas, calcular a média, mediana, moda, os quartis e o desvio-padrão. Compare os valores das medidas obtidas com o rol.}
 	\begin{table}[H]
 		\centering
 		\caption{Medidas reconstruídas a partir das tabelas de frequência}
-		\label{f}
 		\begin{tabular}{c|ccc}
 			\toprule
 						& Sexo		& Idade (anos)	& Preço (\pounds)	\\
@@ -184,47 +186,66 @@
 			\bottomrule
 		\end{tabular}
 	\end{table}
+	Primeiramente, como o sexo dos passageiros foi tabelado seguindo frequências simples, não há perda de informações, ou seja, as estatísticas devem permanecer idênticas. Pelo outro lado, como a variável associada é qualitativa nominal, ela apresenta uma única estatística: sua moda.
+
+	Por sua vez, ao se tratar das estatísticas relativas à idade dos passageiros e ao preço de seus bilhetes, a começar, vemos que as médias reconstruídas estão deslocadas à direita das originais, mas os valores são próximos.
+
+	Tanto para a idade dos passageiros, quanto para o preço  de seus bilhetes, há uma classe significativamente mais frequente do que todas outras, $20 \vdash 30$ anos e $0\,\pounds \vdash 46,575\,\pounds$, respectivamente. Para o preço, em particular, essa diferença de frequência é gritante.
+
+	Consequentemente, a mediana, a moda e os quartis desses dados convergem ao ponto médio de tal classe, $25$ anos ou $23,29\,\pounds$. Para a idade, este efeito não é tão forte, afinal, $Q_3 = 35$ anos, o ponto médio da classe seguinte. Mas, para o preço, todos quartis reconstruídos coincidiram em $23,29\,\pounds$.
+
+	Por fim, o desvio padrão das idades aumentou muito ligeiramente, ao passo que o dos preços diminui ligeiramente. Acreditamos que a diminuição --- no caso dos preços --- deve-se ao fato de preços, antes próximos, agora serem valorados no preço idêntico de $23,29\,\pounds$.
+	\vspace*{2\baselineskip}
 	
 	\noindent\textbf{g) Sumarizar as informações de cada variável graficamente (apresente dois gráficos), interpretando-as. Para a variável quantitativa contínua, apresentar obrigatoriamente o histograma e o \textit{boxplot}}.
 	\begin{figure}[H]
 		\centering
 		\begin{subfigure}[t]{.49\textwidth}
-			\includegraphics[height=.25\textheight, keepaspectratio]{sexo_barra.pdf}
+			\includegraphics[width=\linewidth]{sexo_barra.pdf}
 			\caption{Gráfico de barras}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}[t]{.49\textwidth}
-			\includegraphics[height=.25\textheight, keepaspectratio]{sexo_pizza.pdf}
+			\includegraphics[width=\linewidth]{sexo_pizza.pdf}
 			\caption{Gráfico de setores}
 		\end{subfigure}
 		\caption{Gráficos relativos aos sexos dos passageiros}
 	\end{figure}
+	Ambos os gráficos, mas, em especial, o de setores, mostram que a tripulação masculina do Titanic era próxima do dobro da feminina. Ou, ao menos, este era o caso para o subconjunto de 714 passageiros avaliado.
 	\begin{figure}[H]
 		\centering
 		\begin{subfigure}[t]{.49\textwidth}
-			\includegraphics[height=.25\textheight, keepaspectratio]{idade_histograma.pdf}
+			\includegraphics[width=\linewidth]{idade_histograma.pdf}
 			\caption{Histograma}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}[t]{.49\textwidth}
-			\includegraphics[height=.25\textheight, keepaspectratio]{idade_boxplot.pdf}
+			\includegraphics[width=\linewidth]{idade_boxplot.pdf}
 			\caption{\emph{Boxplot}}
 		\end{subfigure}
 		\caption{Gráficos relativos às idades dos passageiros}
 	\end{figure}
+	O histograma ilustra uma distribuição unimodal com assimetria à direita, mostrando que $20 \vdash 30$ é a faixa etária mais frequente.
+	
+	O \emph{boxplot} também nos evidencia assimetria à direita. A começar, sua ``caixa'' nos informa que 50\% dos passageiros possuem entre 20 a 38 anos. Todavia, sua linha mediana (28 anos) está ligeiramente deslocada para baixo. Por fim, ele destaca a presença de \emph{outliers} à direita --- valores acima de seu ``bigode'' superior --- o que corresponde à minoria de passageiros idosos do Titanic.
 	\begin{figure}[H]
 		\centering
 		\begin{subfigure}[t]{.49\textwidth}
-			\includegraphics[height=.25\textheight, keepaspectratio]{preco_histograma.pdf}
+			\includegraphics[width=\linewidth]{preco_histograma.pdf}
 			\caption{Histograma}
 		\end{subfigure}
 		\hfill
 		\begin{subfigure}[t]{.49\textwidth}
-			\includegraphics[height=.25\textheight, keepaspectratio]{preco_boxplot.pdf}
+			\includegraphics[width=\linewidth]{preco_boxplot.pdf}
 			\caption{\emph{Boxplot}}
 		\end{subfigure}
 		\caption{Gráficos relativos aos preços dos bilhetes dos passageiros}
 	\end{figure}
+	Tanto o histograma, quanto o \emph{boxplot} indicam uma extrema assimetria à direita nos preços. No histograma, a primeira barra (bilhetes mais baratos) concentra quase todos os dados, enquanto as demais formam uma cauda longa e quase invisível.
+
+	O \emph{boxplot}, por sua vez, apresenta não só uma linha mediana mais próxima de $Q_1$ do que $Q_3$, mas a ``caixa'' como um todo é muito estreita, seguida por uma longa sequência de \emph{outliers} à direita.
+
+	Tal configuração faz sentido se considerarmos que a maioria dos passageiros viajaram em cabines simples, ao passo que alguns seletos alugaram cabines de luxo.
 	
 	% --- BIBLIOGRAFIA ---
 	%\printbibliography

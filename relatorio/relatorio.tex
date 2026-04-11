@@ -7,7 +7,7 @@
 % 2. Configure Project-Specific File Paths & Metadata
 % 2.1. File Paths
 %\addbibresource{bibliografia.bib}
-%\graphicspath{ {./imagens/} }
+\graphicspath{ {../output/} }
 
 % 2.2. Metadata
 %\hypersetup{
@@ -61,6 +61,8 @@
 	\end{table}
 
 	\noindent\textbf{b) Com base no rol, calcular os quartis, interpretando-os}
+
+	Vale salientar que quartis de índices fracionários foram calculados pela média simples dos dois valores de índices mais próximos.
 	\begin{table}[H]
 		\centering
 		\caption{Quartis das idades e dos preços dos bilhetes dos passageiros}
@@ -71,7 +73,7 @@
 			\midrule
 			$Q_1$	& 20			& 8,05 				\\
 			$Q_2$	& 28			& 15,74 			\\
-			$Q_3$	& 38			& 33,38				\\
+			$Q_3$	& 38			& 33,25				\\
 			\bottomrule
 		\end{tabular}
 	\end{table}
@@ -86,7 +88,7 @@
 					& Idade (anos)	& Preço (\pounds)	\\
 			\midrule
 			$A$		& 80,00			& 512,33			\\
-			$d_Q$	& 18,00			& 25,32 			\\
+			$d_Q$	& 18,00			& 25,20 			\\
 			$S$		& 14,52			& 52,92				\\
 			$CV(\%)$& 48,92			& 152,53			\\
 			\bottomrule
@@ -172,12 +174,12 @@
 			\toprule
 						& Sexo		& Idade (anos)	& Preço (\pounds)	\\
 			\midrule
-			$\bar{X}$	& -			& 30,25			& 34,69 			\\
-			Md			& -			& 25,00			& 23,39 			\\
-			Mo			& masculino	& 25,00			& 23,39				\\
-			$Q_1$		& -			& 25,00			& 23,39				\\
-			$Q_2$		& -			& 25,00			& 23,39				\\
-			$Q_3$		& -			& 35,00			& 23,39				\\
+			$\bar{X}$	& -			& 30,25			& 40,90 			\\
+			Md			& -			& 25,00			& 23,29 			\\
+			Mo			& masculino	& 25,00			& 23,29				\\
+			$Q_1$		& -			& 25,00			& 23,29				\\
+			$Q_2$		& -			& 25,00			& 23,29				\\
+			$Q_3$		& -			& 35,00			& 23,29				\\
 			$S$			& -			& 14,97			& 48,91				\\
 			\bottomrule
 		\end{tabular}
@@ -186,27 +188,42 @@
 	\noindent\textbf{g) Sumarizar as informações de cada variável graficamente (apresente dois gráficos), interpretando-as. Para a variável quantitativa contínua, apresentar obrigatoriamente o histograma e o \textit{boxplot}}.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[height=6cm]{../output/sexo_barra.png}
+		\begin{subfigure}[t]{.49\textwidth}
+			\includegraphics[height=.25\textheight, keepaspectratio]{sexo_barra.pdf}
+			\caption{Gráfico de barras}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[t]{.49\textwidth}
+			\includegraphics[height=.25\textheight, keepaspectratio]{sexo_pizza.pdf}
+			\caption{Gráfico de setores}
+		\end{subfigure}
+		\caption{Gráficos relativos aos sexos dos passageiros}
 	\end{figure}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[height=6cm]{../output/sexo_pizza.png}
+		\begin{subfigure}[t]{.49\textwidth}
+			\includegraphics[height=.25\textheight, keepaspectratio]{idade_histograma.pdf}
+			\caption{Histograma}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[t]{.49\textwidth}
+			\includegraphics[height=.25\textheight, keepaspectratio]{idade_boxplot.pdf}
+			\caption{\emph{Boxplot}}
+		\end{subfigure}
+		\caption{Gráficos relativos às idades dos passageiros}
 	\end{figure}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[height=6cm]{../output/idade_histograma.png}
-	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[height=6cm]{../output/idade_boxplot.png}
-	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[height=6cm]{../output/preco_histograma.png}
-	\end{figure}
-	\begin{figure}[H]
-		\centering
-		\includegraphics[height=6cm]{../output/preco_boxplot.png}
+		\begin{subfigure}[t]{.49\textwidth}
+			\includegraphics[height=.25\textheight, keepaspectratio]{preco_histograma.pdf}
+			\caption{Histograma}
+		\end{subfigure}
+		\hfill
+		\begin{subfigure}[t]{.49\textwidth}
+			\includegraphics[height=.25\textheight, keepaspectratio]{preco_boxplot.pdf}
+			\caption{\emph{Boxplot}}
+		\end{subfigure}
+		\caption{Gráficos relativos aos preços dos bilhetes dos passageiros}
 	\end{figure}
 	
 	% --- BIBLIOGRAFIA ---

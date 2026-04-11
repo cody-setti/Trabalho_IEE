@@ -45,7 +45,7 @@
 		\item No momento de venda, em 1912, os bilhetes do Titanic foram cobrados no sistema monetário \textit{Sterling} antigo, com valores dados em libras, xelins e pence. Todavia, no banco de dados \verb|titanic.csv| --- disponibilizado no \emph{Kaggle} em 2012 --- estes valores foram convertidos ao novo sistema \textit{Sterling}, de 1971 em diante. Portanto, cada valor é dado por um único número de libras, embora seja frequentemente um número fracionário. Com isso em mente, interpretamos os preços como amostragens de uma única \textbf{variável quantitativa contínua}.
 	\end{enumerate}
 	\vspace*{\baselineskip}
-
+	
 	\noindent\textbf{a) Com base no rol, calcular a média, mediana e moda e compare-as}
 	\begin{table}[H]
 		\centering
@@ -60,7 +60,6 @@
 			\bottomrule
 		\end{tabular}
 	\end{table}
-	[INSERIR INTERPRETAÇÃO]
 	\vspace*{2\baselineskip}
 
 	\noindent\textbf{b) Com base no rol, calcular os quartis, interpretando-os}
@@ -79,7 +78,9 @@
 		\end{tabular}
 	\end{table}
 	\footnotetext{Quartis de índices fracionários foram calculados pela média simples dos dois valores de índices mais próximos.}
-	[INSERIR INTERPRETAÇÃO]
+	Ao analisarmos os quartis das idades, observamos que 25\% dos passageiros tinham até 20 anos ($Q_1$), enquanto 75\% da amostra possuía idade igual ou inferior a 38 anos ($Q_3$). A mediana ($Q_2$) indica que metade dos passageiros tinha no máximo 28 anos, evidenciando uma concentração de jovens adultos na embarcação.
+
+	Quanto aos preços dos bilhetes, a disparidade econômica torna-se evidente: enquanto 25\% dos passageiros pagaram até \pounds\,$8,05$ ($Q_1$), a mediana ($Q_2$) revela que metade do grupo desembolsou no máximo \pounds\,$15,74$ por sua passagem. O terceiro quartil ($Q_3$) mostra que 75\% dos passageiros pagaram até \pounds\,$33,25$, valor que, embora superior aos demais quartis, ainda é drasticamente inferior ao valor máximo de \pounds\,$512,33$. Essa proximidade entre $Q_1$, $Q_2$ e $Q_3$ em relação à amplitude total reforça a existência de uma grande massa de passageiros com bilhetes de baixo custo frente a uma minoria com passagens de luxo.
 	\vspace*{2\baselineskip}
 	
 	\noindent\textbf{c) Calcular a amplitude total, amplitude interquartílica, o desvio-padrão e coeficiente de variação. Ressaltar dentre as variáveis quantitativas qual tem maior variabilidade}
@@ -190,11 +191,11 @@
 
 	Por sua vez, ao se tratar das estatísticas relativas à idade dos passageiros e ao preço de seus bilhetes, a começar, vemos que as médias reconstruídas estão deslocadas à direita das originais, mas os valores são próximos.
 
-	Tanto para a idade dos passageiros, quanto para o preço  de seus bilhetes, há uma classe significativamente mais frequente do que todas outras, $20 \vdash 30$ anos e $0\,\pounds \vdash 46,575\,\pounds$, respectivamente. Para o preço, em particular, essa diferença de frequência é gritante.
+	Tanto para a idade dos passageiros, quanto para o preço  de seus bilhetes, há uma classe significativamente mais frequente do que todas outras, $20 \vdash 30$ anos e \pounds\,$0$ $\vdash$ \pounds\,$46,575$, respectivamente. Para o preço, em particular, essa diferença de frequência é gritante.
 
-	Consequentemente, a mediana, a moda e os quartis desses dados convergem ao ponto médio de tal classe, $25$ anos ou $23,29\,\pounds$. Para a idade, este efeito não é tão forte, afinal, $Q_3 = 35$ anos, o ponto médio da classe seguinte. Mas, para o preço, todos quartis reconstruídos coincidiram em $23,29\,\pounds$.
+	Consequentemente, a mediana, a moda e os quartis desses dados convergem ao ponto médio de tal classe, $25$ anos ou \pounds\,$23,29$. Para a idade, este efeito não é tão forte, afinal, $Q_3 = 35$ anos, o ponto médio da classe seguinte. Mas, para o preço, todos quartis reconstruídos coincidiram em \pounds\,$23,29$.
 
-	Por fim, o desvio padrão das idades aumentou muito ligeiramente, ao passo que o dos preços diminui ligeiramente. Acreditamos que a diminuição --- no caso dos preços --- deve-se ao fato de preços, antes próximos, agora serem valorados no preço idêntico de $23,29\,\pounds$.
+	Por fim, o desvio padrão das idades aumentou muito ligeiramente, ao passo que o dos preços diminui ligeiramente. Acreditamos que a diminuição --- no caso dos preços --- deve-se ao fato de preços, antes próximos, agora serem valorados no preço idêntico de \pounds\,$23,29$.
 	\vspace*{2\baselineskip}
 	
 	\noindent\textbf{g) Sumarizar as informações de cada variável graficamente (apresente dois gráficos), interpretando-as. Para a variável quantitativa contínua, apresentar obrigatoriamente o histograma e o \textit{boxplot}}.

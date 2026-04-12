@@ -198,7 +198,7 @@ os.makedirs('output', exist_ok=True)
 
 # GRÁFICOS PARA 'SEXO'
 # Gráfico de Barras
-plt.figure(figsize=(WIDTH, 2.5))
+plt.figure(figsize=(WIDTH, 2))
 SexFREQ.rename(index={'male': 'Masculino', 'female': 'Feminino'}).plot(
     kind='bar',  color=["#a4c7e0", "#ffd596"], edgecolor='black'
 )
@@ -210,7 +210,7 @@ plt.savefig('output/sexo_barra.pdf', format='pdf')
 plt.close()
 
 # Gráfico de Setores (Pizza)
-plt.figure(figsize=(WIDTH, 2.5))
+plt.figure(figsize=(WIDTH, 2))
 SexFREQ.rename(index={'male': 'Masculino', 'female': 'Feminino'}).plot(
     kind = 'pie',
     autopct = '%1.1f%%',
@@ -226,7 +226,7 @@ plt.close()
 
 # GRÁFICOS PARA 'IDADE'
 # Histograma
-plt.figure(figsize=(WIDTH, 3.5))
+plt.figure(figsize=(WIDTH, 2.5))
 plt.hist(DATA['Age'], bins=age_bins, color='#7DA17D', edgecolor='black')
 plt.xticks(age_bins)
 plt.xlabel('Idade (anos)')
@@ -253,7 +253,7 @@ plt.close()
 
 # GRÁFICOS PARA 'PREÇOS'
 # Histograma
-plt.figure(figsize=(WIDTH, 3.5))
+plt.figure(figsize=(WIDTH, 2.5))
 plt.hist(DATA['Fare'], bins=k_sturges, color="#A28BB6", edgecolor='black')
 plt.xlabel('Preço (Lp)')
 plt.ylabel('Frequência')

@@ -1,5 +1,0 @@
-1. Podemos usar as funções mean(), median(), mode(), quantile(), etc... do PANDAS para calcular as estatísticas? Note, nenhuma destas funções necessita a organização do conjunto de dados no rol. Isto é feito internamente às chamadas de função (quando aplicável).
-
-2. Qual forma de interpolação usar no cálculo dos quartis? 'linear'? 'midpoint'?
-
-3. Para o cálculo das estatísticas das tabelas de frequências (por classes), tudo bem "reconstruir" o banco de dados?

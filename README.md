@@ -1,4 +1,4 @@
-# SME0211 - Introdução à Inferência Estatística
+# SME0221 - Introdução à Inferência Estatística
 
 **[🌎 Read in English](./README_en.md)**
 

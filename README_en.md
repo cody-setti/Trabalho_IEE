@@ -1,4 +1,4 @@
-# SME0211 - Introduction to Statistical Inference
+# SME0221 - Introduction to Statistical Inference
 
 **[🇧🇷 Ler em Português](./README.md)**
 
